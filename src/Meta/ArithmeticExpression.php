@@ -54,8 +54,8 @@ class ArithmeticExpression implements InterfaceArithmetic
         $tmpArray = [];
         for ($i = 0; $i < strlen($str); $i++) {
             $char = substr($str, $i, 1);
-            if (!array_key_exists($char,$this->arrayCorrectSymbol)
-                || end($tmpArray) !== $this->arrayCorrectSymbol[$char]) {
+            if (!array_key_exists($char,$this->arrayCorrectSymbol) ||
+                end($tmpArray) !== $this->arrayCorrectSymbol[$char]) {
                 $tmpArray = [];
             } else {
                 $tmpArray[] = $char;
