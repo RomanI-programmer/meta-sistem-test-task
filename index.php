@@ -1,21 +1,25 @@
 <?php
 
-use Meta\Base\ArithmeticExpression;
+use Meta\ArithmeticExpression;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 $object = new ArithmeticExpression();
-$object->setArrayCorrectSymbol(['[',']','{','}','(',')']);
-try {
-    $object->setStringParse("dfkm{akdm]ajdn}akdm](");
-} catch (Exception $e) {
-    echo "Виникла помилка {$e->getMessage()}";
-    exit();
-}
 
-if($object->checkCorrectString()) {
-    echo 'Вірно';
-}
-else{
-    echo 'Не вірно';
+$object->setArrayCorrectSymbol(
+    [
+        '[' => ']',
+        '{' => '}',
+        '(' => ')',
+    ]
+);
+
+try {
+    if ($object->checkCorrectString('(sdsfd{vdfvdf)}')) {
+        echo 'Вірно';
+    } else {
+        echo 'Не вірно';
+    }
+} catch (Exception $exception) {
+    echo $exception->getMessage();
 }
